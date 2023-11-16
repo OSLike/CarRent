@@ -17,6 +17,6 @@ user用户实现了调用接口查看车辆信息以及租用车辆。
 
 序列化``ArrayList<Vehicle> vehicles``并通过``t.tmp``文件存储，再通过反序列化读``t.tmp``文件并写到``ArrayList<Vehicle> vehicles``中。
 
-在``artifications``中的内容为通过jar直接打包的包，需要配合在同一目录下的``t.tmp``使用。
+在各个GNU/Linux发行版的IDEA项目的文件操作，当前目录为当前项目主文件夹下，即本项目``/path/to/CarRent/``的位置，也是``t.tmp``应该存放的位置。Win下应该将``t.tmp``文件放置在``/path/to/CarRent/../``中。（如果仍存在报错，请调整Main.initInfos()中的注释，进行一次完整的init以获得``t.tmp``文件正确部署位置并初始化``t.tmp``）
 
-在各个GNU/Linux发行版的IDEA项目的文件操作，当前目录为当前项目主文件夹下，即本项目``/path/to/CarRent/``的位置，也是``t.tmp``应该存放的位置。Win下应该将``t.tmp``文件放置在``/path/to/CarRent/out/production/``中。
+在``artifications``中的内容为通过jar直接打包的包，需要配合在同一目录下的``t.tmp``使用。
