@@ -19,4 +19,4 @@ user用户实现了调用接口查看车辆信息以及租用车辆。
 
 在``artifications``中的内容为通过jar直接打包的包，需要配合在同一目录下的``t.tmp``使用。
 
-在各个GNU/Linux发行版的IDEA项目的文件操作，当前目录为当前项目主文件夹下，即本项目```/path/to/CarRent/``的位置，也是``t.tmp``应该存放的位置。Win下应该将``t.tmp``文件放置在``/path/to/CarRent/out/production/``中。
+在各个GNU/Linux发行版的IDEA项目的文件操作，当前目录为当前项目主文件夹下，即本项目``/path/to/CarRent/``的位置，也是``t.tmp``应该存放的位置。Win下应该将``t.tmp``文件放置在``/path/to/CarRent/out/production/``中。
