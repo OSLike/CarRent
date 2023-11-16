@@ -1,5 +1,8 @@
-import java.io.*;
-import java.util.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     static Scanner sc = new Scanner(System.in);
@@ -16,6 +19,7 @@ public class Main {
             }
         }
     }
+
     public static void initInfos() throws IOException, ClassNotFoundException {
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream("t.tmp"));
 //        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("t.tmp"));
@@ -32,6 +36,7 @@ public class Main {
         ois.close();
 //        oos.close();
     }
+
     private static void CLI() throws IOException {
         System.out.println("********************");
         System.out.println("*   本汽车租赁系统   *");
@@ -56,6 +61,7 @@ public class Main {
                 System.exit(0);
         }
     }
+
     private static void loginPage_CLI() throws IOException {
         System.out.print("请输入用户名：");
         String userName = sc.next();
@@ -70,8 +76,9 @@ public class Main {
                 user.logg();
             }
         }
-        if(!bool) System.out.println("账号或密码错误！");
+        if (!bool) System.out.println("账号或密码错误！");
     }
+
     private static void regPage_CLI() {
         System.out.print("请输入用户名：");
         String userName = sc.next();
@@ -79,7 +86,7 @@ public class Main {
         String userPwdF = sc.next();
         System.out.print("请再次输入密码：");
         String userPwdS = sc.next();
-        if(!userPwdF.equals(userPwdS)) {
+        if (!userPwdF.equals(userPwdS)) {
             System.out.println("两次输入的密码不同，请检查后重试！");
             return;
         }
@@ -88,6 +95,7 @@ public class Main {
         System.out.println("注册成功。");
     }
 }
+
 abstract class User implements Factory {
     String userName;
     String userPwd;

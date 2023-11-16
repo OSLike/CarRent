@@ -1,6 +1,12 @@
-import java.io.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public class StoreMgr extends User implements Factory {
+    public StoreMgr(String userName, String userPwd, boolean isAdmin) {
+        super(userName, userPwd, isAdmin);
+    }
+
     public static boolean CLI() throws IOException {
         System.out.println("*********************");
         System.out.println("*    本汽车租赁系统   *");
@@ -35,37 +41,39 @@ public class StoreMgr extends User implements Factory {
         }
         return true;
     }
+
     public static void carInfoChange() throws IOException {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("t.tmp"));
         System.out.print("请输入你希望修改信息的车辆的对应编号：");
         String num_S = Main.sc.next();
-        if(!Factory.isNumeric4(num_S)) {
+        if (!Factory.isNumeric4(num_S)) {
             System.out.print("错误的输入。\n请重新输入：");
             num_S = Main.sc.next();
         }
         int num = Integer.parseInt(num_S);
         System.out.println("接下来请输入对应车辆的基础信息：");
         System.out.print("车牌号：");
-        Main.vehicles.get(num-1).setVehicleld(Main.sc.next());
+        Main.vehicles.get(num - 1).setVehicleld(Main.sc.next());
         System.out.print("品牌：");
-        Main.vehicles.get(num-1).setBrand(Main.sc.next());
+        Main.vehicles.get(num - 1).setBrand(Main.sc.next());
         System.out.print("型号：");
-        Main.vehicles.get(num-1).setType(Main.sc.next());
+        Main.vehicles.get(num - 1).setType(Main.sc.next());
         System.out.print("日租金：");
         String perRent_S = Main.sc.next();
         int perRent_I;
-        if(!Factory.isNumeric4(perRent_S)) {
+        if (!Factory.isNumeric4(perRent_S)) {
             System.out.print("错误的输入。\n请重新输入：");
             perRent_S = Main.sc.next();
         }
         perRent_I = Integer.parseInt(perRent_S);
-        Main.vehicles.get(num-1).setPerRent(perRent_I);
+        Main.vehicles.get(num - 1).setPerRent(perRent_I);
         System.out.println("接下来请输入对应车辆的细节信息：");
-        Main.vehicles.get(num-1).detailsSet();
+        Main.vehicles.get(num - 1).detailsSet();
         System.out.println("修改成功！");
         oos.writeObject(Main.vehicles);
         oos.close();
     }
+
     public static void addCar() throws IOException {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("t.tmp"));
         System.out.println("1 卡车;2 轿车;3 巴士");
@@ -96,7 +104,7 @@ public class StoreMgr extends User implements Factory {
         System.out.print("日租金：");
         String perRent_S = Main.sc.next();
         int perRent_I;
-        while(!Factory.isNumeric4(perRent_S)) {
+        while (!Factory.isNumeric4(perRent_S)) {
             System.out.println("错误的输入，请重新输入。");
             System.out.print("日租金:");
             perRent_S = Main.sc.next();
@@ -110,25 +118,23 @@ public class StoreMgr extends User implements Factory {
         oos.writeObject(Main.vehicles);
         oos.close();
     }
+
     public static void delCar() throws IOException {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("t.tmp"));
         System.out.println("请输入你希望删除的车辆的对应编号：");
         String num_S = Main.sc.next();
-        if(!Factory.isNumeric4(num_S)) {
+        if (!Factory.isNumeric4(num_S)) {
             System.out.print("错误的输入。\n请重新输入：");
             num_S = Main.sc.next();
         }
         int num = Integer.parseInt(num_S);
-        Main.vehicles.remove(num-1);
+        Main.vehicles.remove(num - 1);
         oos.writeObject(Main.vehicles);
         oos.close();
     }
+
     @Override
     public void logg() throws IOException {
-        while(CLI()) ;
-    }
-
-    public StoreMgr(String userName, String userPwd, boolean isAdmin) {
-        super(userName, userPwd, isAdmin);
+        while (CLI()) ;
     }
 }

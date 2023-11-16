@@ -5,8 +5,22 @@ abstract class Vehicle implements Serializable {
     String brand;               // 品牌
     String type;                // 型号
     int perRent;                // 日租金
-    public void detailsSet() {}
-    public void details() {}
+
+    public Vehicle() {
+    }
+
+    public Vehicle(String vehicleld, String brand, String type, int perRent) {
+        this.vehicleld = vehicleld;
+        this.brand = brand;
+        this.type = type;
+        this.perRent = perRent;
+    }
+
+    public void detailsSet() {
+    }
+
+    public void details() {
+    }
 
     public void setVehicleld(String vehicleld) {
         this.vehicleld = vehicleld;
@@ -21,14 +35,6 @@ abstract class Vehicle implements Serializable {
     }
 
     public void setPerRent(int perRent) {
-        this.perRent = perRent;
-    }
-
-    public Vehicle() {}
-    public Vehicle(String vehicleld, String brand, String type, int perRent) {
-        this.vehicleld = vehicleld;
-        this.brand = brand;
-        this.type = type;
         this.perRent = perRent;
     }
 }
